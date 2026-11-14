@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIA Admin Dashboard</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 18px;
+      background: #f1f5f9;
+      font-family: Arial, sans-serif;
+      color: #172554;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px #0001;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 3px solid #173b70;
+      padding-bottom: 15px;
+    }
+
+    h2 { color: #173b70; }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 11px 16px;
+      margin: 5px 3px;
+      background: #173b70;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .danger { background: #b91c1c; }
+
+    .hidden { display: none; }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 750px;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th { background: #e8eef7; }
+
+    #message {
+      margin: 12px 0;
+      font-weight: bold;
+    }
+
+    .application-card {
+      border: 1px solid #ddd;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <header>
+    <h2>MARADUN ISLAMIC ACADEMY</h2>
+    <p><b>ADMINISTRATION DASHBOARD</b></p>
+  </header>
+
+  <div id="loginSection">
+    <h3>Administrator Login</h3>
+
+    <form id="loginForm">
+      <label>Email Address</label>
+      <input
+        type="email"
+        id="adminEmail"
+        required
+        placeholder="Enter admin email">
+
+      <label>Password</label>
+      <input
+        type="password"
+        id="adminPassword"
+        required
+        placeholder="Enter password">
+
+      <button type="submit" id="loginBtn">
+        Login
+      </button>
+    </form>
+  </div>
+
+  <div id="dashboard" class="hidden">
+
+    <h3>Applications Dashboard</h3>
+
+    <p id="adminWelcome"></p>
+
+    <button id="refreshBtn">Refresh Applications</button>
+    <button id="exportBtn">Export CSV</button>
+    <button id="logoutBtn" class="danger">Logout</button>
+
+    <p id="message"></p>
+
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search by name or application number">
+
+    <select id="statusFilter">
+      <option value="">All Applications</option>
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+
+    <div id="applicationList"></div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
